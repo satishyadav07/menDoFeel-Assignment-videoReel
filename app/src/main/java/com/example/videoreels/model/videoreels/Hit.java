@@ -18,8 +18,6 @@ public class Hit {
     private String type;
     @SerializedName("tags")
     @Expose
-
-
     private String tags;
     @SerializedName("duration")
     @Expose
