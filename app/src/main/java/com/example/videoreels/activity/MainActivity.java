@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,6 +46,7 @@ public class MainActivity extends Activity {
     List<String> urlList = new ArrayList<>();
     private static final String TAG = "MainActivity";
     private List<MediaItem> streamURls =new ArrayList<>();
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +62,11 @@ public class MainActivity extends Activity {
         recyclerView.setDrawingCacheEnabled(true);
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
+
         prepareReelData();
 
-
-
-
-
     }
+
 
     private void prepareReelData() {
 
@@ -76,6 +77,8 @@ public class MainActivity extends Activity {
                  videoModelCall.enqueue(new Callback<VideoModel>() {
                     @Override
                     public void onResponse(@NonNull Call<VideoModel> call, @NonNull Response<VideoModel> response) {
+
+
                         Log.d(TAG, "onResponse: "+response.code());
                         VideoModel videoModel = response.body();
 

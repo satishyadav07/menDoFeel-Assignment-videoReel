@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
 
     <application
         android:allowBackup="true"
@@ -12,14 +15,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Videoreels"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-            >
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +33,15 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+
+        <receiver android:name=".BroadCastReceiver.RegisterBroadCast"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.con.CONNECTIVITY_CHANGE"></action>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
